@@ -12,18 +12,18 @@ function Registration() {
     number: "",
     graduation: "",
     branch: "",
-    skills: [], // Updated to an array
+    skills: [],
+    otherSkill: "", // for custom skill input
     address: "",
     studentId: "",
     prefferedlanguages: "",
     college: "",
-    Tshirt: "",
   });
 
   const [error, setError] = useState("");
   const [recaptchaToken, setRecaptchaToken] = useState("");
 
-  // List of available skills for checkboxes
+  // List of available skills
   const availableSkills = [
     "DSA/CP",
     "CYBERSECURITY",
@@ -32,12 +32,13 @@ function Registration() {
     "BLOCKCHAIN",
     "AI/ML",
     "DATA SCIENCE",
+    "Other",
   ];
 
-  // List of graduation years for dropdown
-  const graduationYears = ["2025", "2026", "2027", "2028"];
+  // Graduation years dropdown
+  const graduationYears = ["2026", "2027", "2028", "2029"];
 
-  // List of preferred languages for dropdown
+  // Preferred languages dropdown
   const preferredLanguages = [
     "Python",
     "Java",
@@ -46,9 +47,6 @@ function Registration() {
     "C",
     "Other",
   ];
-
-  // List of Tshirt sizes for dropdown
-  const tshirtSizes = ["S", "M", "L", "XL", "XXL"];
 
   useEffect(() => {
     // Load reCAPTCHA v3 script
@@ -65,26 +63,16 @@ function Registration() {
 
   // Handle input change
   const handleChange = (e) => {
-    const { name, value, checked } = e.target;
-
-    if (name === "skills") {
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        skills: checked
-          ? [...prevFormData.skills, value]
-          : prevFormData.skills.filter((skill) => skill !== value),
-      }));
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
-  // Function to validate form data
+  // Validate form
   const validateForm = () => {
     const { emailId, number } = formData;
 
     for (const key in formData) {
-      if (formData[key].length === 0) {
+      if (key !== "otherSkill" && formData[key].length === 0) {
         toast.error(
           `${key
             .replace(/([A-Z])/g, " $1")
@@ -101,9 +89,7 @@ function Registration() {
     }
 
     const phoneRegex = /^[0-9]{10}$/;
-    const trimmedNumber = number.trim();
-
-    if (!phoneRegex.test(trimmedNumber)) {
+    if (!phoneRegex.test(number.trim())) {
       toast.error("Phone number must be 10 digits.");
       return false;
     }
@@ -111,7 +97,7 @@ function Registration() {
     return true;
   };
 
-  // Function to check Firestore for uniqueness
+  // Check uniqueness in Firestore
   const checkUniqueFields = async () => {
     const { emailId, number } = formData;
 
@@ -147,14 +133,12 @@ function Registration() {
     return true;
   };
 
-  // Handle form submission
+  // Handle form submit
   const handleRegister = async (e) => {
     e.preventDefault();
     setError("");
 
-    if (!validateForm()) {
-      return;
-    }
+    if (!validateForm()) return;
 
     try {
       const token = await window.grecaptcha.execute(
@@ -164,17 +148,19 @@ function Registration() {
       setRecaptchaToken(token);
 
       const isUnique = await checkUniqueFields();
-      if (!isUnique) {
-        return;
-      }
+      if (!isUnique) return;
 
-      // Convert skills array to a comma-separated string
-      const skillsString = formData.skills.join(", ");
+      // Merge skills + otherSkill
+      const skillsString = [
+        ...formData.skills.filter((s) => s !== "Other"),
+        ...(formData.skills.includes("Other") && formData.otherSkill
+          ? [formData.otherSkill]
+          : []),
+      ].join(", ");
 
-      // Add registration document to Firestore with skills as a string
       const docRef = await addDoc(collection(db, "registrations"), {
         ...formData,
-        skills: skillsString, // Save as a string
+        skills: skillsString,
         recaptchaToken: token,
       });
 
@@ -186,12 +172,12 @@ function Registration() {
         number: "",
         graduation: "",
         branch: "",
-        skills: [], // Reset skills to an empty array
+        skills: [],
+        otherSkill: "",
         address: "",
         studentId: "",
         prefferedlanguages: "",
         college: "",
-        Tshirt: "",
       });
 
       toast.success("Registration Successful");
@@ -212,105 +198,107 @@ function Registration() {
     studentId: "Student ID (Enrollment no.)",
     prefferedlanguages: "Preferred Language",
     college: "College Name",
-    Tshirt: "Tshirt Size",
   };
 
   return (
     <form onSubmit={handleRegister} className="registration-form">
       <h3 className="registration-form__title">CodeAdept 9.0 Registration</h3>
 
-      {Object.keys(formData).map((key) => (
-        <div className="registration-form__field" key={key}>
-          <label htmlFor={key}>{displayLabels[key]}</label>
-          {key === "graduation" ? (
-            <select
-              id={key}
-              className="registration-form__input"
-              name={key}
-              value={formData[key]}
-              onChange={handleChange}
-            >
-              <option value="">Select Graduation Year</option>
-              {graduationYears.map((year) => (
-                <option key={year} value={year}>
-                  {year}
-                </option>
-              ))}
-            </select>
-          ) : key === "prefferedlanguages" ? (
-            <select
-              id={key}
-              className="registration-form__input"
-              name={key}
-              value={formData[key]}
-              onChange={handleChange}
-            >
-              <option value="">Select Preferred Language</option>
-              {preferredLanguages.map((language) => (
-                <option key={language} value={language}>
-                  {language}
-                </option>
-              ))}
-            </select>
-          ) : key === "Tshirt" ? (
-            <select
-              id={key}
-              className="registration-form__input"
-              name={key}
-              value={formData[key]}
-              onChange={handleChange}
-            >
-              <option value="">Select Tshirt Size</option>
-              {tshirtSizes.map((language) => (
-                <option key={language} value={language}>
-                  {language}
-                </option>
-              ))}
-            </select>
-          ) : key === "skills" ? (
-            <div className="skills-container">
-              {availableSkills.map((skill) => (
-                <button
-                  key={skill}
-                  type="button"
-                  className={`skill-btn ${
-                    formData.skills.includes(skill) ? "selected" : ""
-                  }`}
-                  onClick={() => {
-                    setFormData((prev) => ({
-                      ...prev,
-                      skills: prev.skills.includes(skill)
-                        ? prev.skills.filter((s) => s !== skill)
-                        : [...prev.skills, skill],
-                    }));
-                  }}
+      {Object.keys(formData).map(
+        (key) =>
+          key !== "otherSkill" && (
+            <div className="registration-form__field" key={key}>
+              <label htmlFor={key}>{displayLabels[key]}</label>
+              {key === "graduation" ? (
+                <select
+                  id={key}
+                  className="registration-form__input"
+                  name={key}
+                  value={formData[key]}
+                  onChange={handleChange}
                 >
-                  {skill}
-                </button>
-              ))}
+                  <option value="">Select Graduation Year</option>
+                  {graduationYears.map((year) => (
+                    <option key={year} value={year}>
+                      {year}
+                    </option>
+                  ))}
+                </select>
+              ) : key === "prefferedlanguages" ? (
+                <select
+                  id={key}
+                  className="registration-form__input"
+                  name={key}
+                  value={formData[key]}
+                  onChange={handleChange}
+                >
+                  <option value="">Select Preferred Language</option>
+                  {preferredLanguages.map((language) => (
+                    <option key={language} value={language}>
+                      {language}
+                    </option>
+                  ))}
+                </select>
+              ) : key === "skills" ? (
+                <div className="skills-container">
+                  {availableSkills.map((skill) => (
+                    <button
+                      key={skill}
+                      type="button"
+                      className={`skill-btn ${
+                        formData.skills.includes(skill) ? "selected" : ""
+                      }`}
+                      onClick={() => {
+                        setFormData((prev) => ({
+                          ...prev,
+                          skills: prev.skills.includes(skill)
+                            ? prev.skills.filter((s) => s !== skill)
+                            : [...prev.skills, skill],
+                        }));
+                      }}
+                    >
+                      {skill}
+                    </button>
+                  ))}
+
+                  {formData.skills.includes("Other") && (
+                    <input
+                      type="text"
+                      className="registration-form__input mt-2"
+                      placeholder="Enter your skill"
+                      value={formData.otherSkill}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          otherSkill: e.target.value,
+                        }))
+                      }
+                    />
+                  )}
+                </div>
+              ) : key === "address" ? (
+                <textarea
+                  id={key}
+                  className="registration-form__input"
+                  name={key}
+                  rows="3"
+                  placeholder={displayLabels[key]}
+                  value={formData[key]}
+                  onChange={handleChange}
+                />
+              ) : (
+                <input
+                  id={key}
+                  className="registration-form__input"
+                  name={key}
+                  placeholder={displayLabels[key]}
+                  value={formData[key]}
+                  onChange={handleChange}
+                />
+              )}
             </div>
-          ) : key === "address" ? (
-            <textarea
-              id={key}
-              className="registration-form__input"
-              name={key}
-              rows="3"
-              placeholder={displayLabels[key]}
-              value={formData[key]}
-              onChange={handleChange}
-            />
-          ) : (
-            <input
-              id={key}
-              className="registration-form__input"
-              name={key}
-              placeholder={displayLabels[key]}
-              value={formData[key]}
-              onChange={handleChange}
-            />
-          )}
-        </div>
-      ))}
+          )
+      )}
 
       {error && <p className="error-message">{error}</p>}
 
