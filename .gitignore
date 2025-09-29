@@ -1,0 +1,29 @@
+# dependencies
+/node_modules
+
+# build output
+/build
+
+# production
+/dist
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# dotenv environment variables (don’t commit secrets)
+.env
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# editor folders
+.vscode/
+.idea/
+*.swp

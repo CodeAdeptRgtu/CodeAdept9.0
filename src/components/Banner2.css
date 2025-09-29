@@ -1,0 +1,86 @@
+.flag {
+  font-family: Mokoto, "Centra", sans-serif;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../assets/img/codeAdept9.0_background.png") center/cover no-repeat;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 2rem;
+  padding: 20px;
+  color: #fff;
+}
+
+.content img {
+  height: 12vh;
+  filter: drop-shadow(0 0 6px #ff6ec4);
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.content img:hover {
+  transform: scale(1.05) rotate(-3deg);
+  filter: drop-shadow(0 0 12px #ff6ec4);
+}
+
+.event-title {
+  font-size: 6.5vh;
+  font-weight: 900;
+  background: linear-gradient(90deg, #ff6ec4, #7873f5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 6px #ff6ec4);
+}
+
+.register-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 25px;
+  background: linear-gradient(90deg, #ff6ec4, #7873f5);
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.register-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 25px rgba(138, 43, 226, 0.6);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .flag {
+    height: 600px;
+  }
+  .event-title {
+    font-size: 6vh;
+  }
+  .register-btn {
+    font-size: 16px;
+    padding: 12px 26px;
+  }
+  .content img {
+    height: 9vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .flag {
+    height: 500px;
+  }
+  .event-title {
+    font-size: 5vh;
+  }
+  .register-btn {
+    font-size: 14px;
+    padding: 10px 22px;
+  }
+  .content img {
+    height: 7vh;
+  }
+}
