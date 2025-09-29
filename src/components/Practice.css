@@ -1,0 +1,50 @@
+.practice-section {
+  padding: 60px 0;
+  background: #0d1117; /* GitHub dark background */
+  color: #fff;
+  min-height: 100vh;
+}
+
+.practice-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+  font-weight: bold;
+  color: #58a6ff; /* nice blue accent */
+}
+
+.practice-subtitle {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #adbac7;
+  font-size: 1rem;
+}
+
+.practice-table {
+  background: #161b22;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.practice-table th {
+  background: #21262d;
+  color: #c9d1d9;
+  font-weight: 600;
+}
+
+.practice-table td {
+  vertical-align: middle;
+  text-align: center;
+  color: #f0f6fc;
+}
+
+.practice-link {
+  color: #58a6ff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.practice-link:hover {
+  text-decoration: underline;
+  color: #79c0ff;
+}

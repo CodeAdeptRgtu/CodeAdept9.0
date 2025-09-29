@@ -2,7 +2,8 @@
   font-family: Mokoto, "Centra", sans-serif;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("../assets/img/codeAdept9.0_background.png") center/cover no-repeat;
-  height: 800px;
+  height: 100vh; /* Full viewport height */
+  min-height: 500px; /* Ensure minimum height on very small screens */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,7 +15,8 @@
 }
 
 .content img {
-  height: 12vh;
+  height: 18vh; /* Increased logo size */
+  max-height: 200px; /* Prevent it from being too huge */
   filter: drop-shadow(0 0 6px #ff6ec4);
   transition: transform 0.4s ease, filter 0.4s ease;
 }
@@ -25,7 +27,7 @@
 }
 
 .event-title {
-  font-size: 6.5vh;
+  font-size: 8vh; /* Slightly bigger title */
   font-weight: 900;
   background: linear-gradient(90deg, #ff6ec4, #7873f5);
   -webkit-background-clip: text;
@@ -55,32 +57,36 @@
 /* Responsive */
 @media (max-width: 768px) {
   .flag {
-    height: 600px;
+    height: 100vh;
+    padding: 15px;
   }
   .event-title {
-    font-size: 6vh;
+    font-size: 6.5vh;
   }
   .register-btn {
     font-size: 16px;
     padding: 12px 26px;
   }
   .content img {
-    height: 9vh;
+    height: 14vh;
+    max-height: 150px;
   }
 }
 
 @media (max-width: 480px) {
   .flag {
-    height: 500px;
+    height: 100vh;
+    padding: 10px;
   }
   .event-title {
-    font-size: 5vh;
+    font-size: 5.5vh;
   }
   .register-btn {
     font-size: 14px;
     padding: 10px 22px;
   }
   .content img {
-    height: 7vh;
+    height: 12vh;
+    max-height: 120px;
   }
 }

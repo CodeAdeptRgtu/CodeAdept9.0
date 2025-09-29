@@ -9,12 +9,11 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 80px 2vw;
+  padding: 60px 2vw;
   background-color: #121212;
-  font-family: Mokoto, sans-serif !important;
   color: #e0e0e0;
-  font-family: "CustomFont", sans-serif;
-  gap: 60px;
+  gap: 40px;
+  font-family: "Mokoto", sans-serif;
 }
 
 /* Winners Section */
@@ -29,7 +28,7 @@ a {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 /* Carousel Items */
@@ -45,10 +44,10 @@ a {
   align-items: center;
   text-align: center;
   background: #1e1e1e;
-  border-radius: 25px;
-  padding: 20px 15px;
-  margin: 1vw;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  padding: 15px;
+  margin: 0.5vw;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -61,7 +60,7 @@ a {
   width: 140px;
   height: 140px;
   border-radius: 50%;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -74,8 +73,8 @@ a {
 .winner-detail h5 {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #aa367c; /* soft purple */
-  margin-bottom: 6px;
+  color: #aa367c;
+  margin-bottom: 4px;
 }
 
 .winner-detail p {
@@ -85,18 +84,18 @@ a {
 
 /* Photo Gallery Slider */
 .gallery-strip {
-  width: 90%;
+  width: 95%;
   max-width: 900px;
   overflow: hidden;
-  border-radius: 25px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
 }
 
 .gallery-strip img {
   width: 100%;
   max-height: 400px;
   object-fit: cover;
-  border-radius: 25px;
+  border-radius: 20px;
   opacity: 0;
   animation: fadeIn 1s forwards;
   transition: transform 0.5s ease, box-shadow 0.5s ease;
@@ -124,16 +123,13 @@ a {
 
 /* Register Button */
 .register-btn {
-  display: flex; /* 🔑 enables flexbox centering */
-  align-items: center; /* 🔑 vertical centering */
-  justify-content: center; /* 🔑 horizontal centering */
-  line-height: 1; /* 🔑 reset default font line-height */
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 700;
   font-size: 18px;
   padding: 14px 32px;
-  font-family: "Centra", sans-serif; /* 🔒 force clean font */
-
+  font-family: "Centra", sans-serif;
   background: linear-gradient(90deg, #ff6ec4, #7873f5);
   border: none;
   border-radius: 25px;
@@ -150,7 +146,7 @@ a {
   box-shadow: 0 6px 25px rgba(138, 43, 226, 0.6);
 }
 
-/* Responsive */
+/* Responsive Adjustments */
 @media (max-width: 1024px) {
   .winner-detail img {
     width: 120px;
@@ -158,6 +154,10 @@ a {
   }
   .gallery-strip img {
     max-height: 300px;
+  }
+  .winner-detail {
+    margin: 0.4vw;
+    padding: 12px;
   }
 }
 
@@ -169,14 +169,24 @@ a {
   .gallery-strip img {
     max-height: 220px;
   }
+  .winner-detail {
+    margin: 0.3vw;
+    padding: 10px;
+  }
   .line {
     font-size: 1.2rem;
+  }
+  .winner-detail h5 {
+    font-size: 1rem;
+  }
+  .winner-detail p {
+    font-size: 0.75rem;
   }
 }
 
 @media (max-width: 480px) {
   .winners-text {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   .gallery-strip img {
     max-height: 150px;
@@ -188,5 +198,15 @@ a {
     width: 70vw;
     font-size: 0.95rem;
     padding: 8px;
+  }
+  .winner-detail img {
+    width: 90px;
+    height: 90px;
+  }
+  .winner-detail h5 {
+    font-size: 0.95rem;
+  }
+  .winner-detail p {
+    font-size: 0.7rem;
   }
 }

@@ -9,19 +9,20 @@ const Info = () => {
         <div className="card">
           <h2 className="card-title">Mission</h2>
           <p className="card-text">
-            We’re here to build the ultimate coding realm where today’s and
-            tomorrow’s coders can dig deep, level up, and discover new
-            opportunities. Students are encouraged to break barriers, push their
-            limits, and unlock their full potential.
+            Our mission is to consistently work towards delivering the finest
+            platform for both the current and upcoming generations of students
+            and to create additional opportunities for students to challenge
+            themselves.
           </p>
         </div>
 
         <div className="card">
           <h2 className="card-title">Vision</h2>
           <p className="card-text">
-            We aim to help coders mine their knowledge and sharpen their
-            problem-solving skills. Our goal is to provide students with a range
-            of experiences that unlock their hidden technical talents.
+            Our focus is on nurturing the fundamental knowledge and
+            problem-solving abilities of programmers. Our goal is to offer
+            students, a wide array of experiences, allowing them to recognize
+            their outstanding technical skills and problem-solving potential.
           </p>
         </div>
       </div>
@@ -50,12 +51,11 @@ const Info = () => {
         </div>
 
         <div className="round-card card">
-          <h3 className="round-title">Round 2: Problem-Solving</h3>
+          <h3 className="round-title">Round 2: Basic Coding</h3>
           <p className="card-text">
-            In the problem-solving round, tackle real-world coding problems that
-            push your programming abilities. Demonstrate clean, efficient code
-            within time constraints while solving complex algorithmic
-            challenges.
+            This round focuses on testing your fundamental programming skills.
+            Solve beginner-friendly coding tasks that evaluate your knowledge of
+            syntax, logic building, and core programming concepts.
           </p>
         </div>
 

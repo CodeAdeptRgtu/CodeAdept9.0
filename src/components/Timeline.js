@@ -6,70 +6,57 @@ import "./Timeline.css";
 export const Timeline = () => {
   const timelineData = [
     {
-      date: "Oct 20, 2024",
-      title: "Register",
+      date: "Sep 30, 2025",
+      title: "Registration Opens",
       texts: [
-        "Register Yourself At CodeAdept",
-        "Registration Starting From Oct 20, 2024",
-        "Registration closes on Nov 07, 2024",
-        "Mock test and contests link will be shared through email.",
+        "Start your journey by registering for CodeAdept 9.0.",
+        "Registration opens on Sep 30, 2025.",
+        "Last date to register is Oct 09, 2025.",
+        "Contest links will be shared via email.",
       ],
     },
     {
-      date: "Nov 11, 2024",
-      title: "Webinar",
-      texts: [
-        "Pre-competition webinar, where expert will share key strategies and tips to help you thrive in the competition.",
-      ],
-    },
-    {
-      date: "Nov 14, 2024",
-      title: "Seminar",
-      texts: [
-        "Join us for an exclusive seminar featuring a distinguished alumni who will share valuable insights and experiences from their professional journey.",
-      ],
-    },
-    {
-      date: "Nov 22, 2024",
+      date: "Sep 30, 2025",
       title: "Mock Test",
       texts: [
-        "Aptitude Question - 10 & Coding Question - 10",
-        "Time - 120 Minutes",
-        "Mock Test contain mixed questions that will be good for practice.",
+        "Includes 10 aptitude and 10 coding questions.",
+        "Duration: 120 minutes.",
+        "The mock test will help you get familiar with the format and prepare better.",
       ],
     },
     {
-      date: "Nov 23, 2024",
-      title: "ROUND 1",
+      date: "Oct 11, 2025",
+      title: "Round 1",
       texts: [
-        "Aptitude & Reasoning Questions - 30",
-        "Time - 45 Minutes",
-        "This round tests your aptitude skills and technical knowledge with no constraints on programming language.",
+        "Aptitude & Reasoning: 30 questions.",
+        "Duration: 45 minutes.",
+        "This round evaluates logical reasoning, problem-solving, and technical aptitude.",
       ],
     },
     {
-      date: "Nov 24, 2024",
-      title: "ROUND 2",
+      date: "Oct 12, 2025",
+      title: "Round 2",
       texts: [
-        "General Coding Questions - 6",
-        "Time - 90 Minutes",
-        "This round tests your technical knowledge with basic debugging problems and coding questions.",
+        "Coding Challenges: 6 questions.",
+        "Duration: 90 minutes.",
+        "This round focuses on debugging and solving intermediate-level coding problems.",
       ],
     },
     {
-      date: "Nov 26, 2024",
-      title: "ROUND 3",
+      date: "Oct 13, 2025",
+      title: "Final Round",
       texts: [
-        "Core Coding Questions - 5",
-        "Time - 90 Minutes",
-        "The final round where you choose your programming weapon and solve challenging coding questions.",
+        "Core Coding Challenges: 5 questions.",
+        "Duration: 90 minutes.",
+        "Choose your preferred programming language and tackle advanced coding challenges.",
       ],
     },
     {
       date: "Stay Tuned",
-      title: "Result Announcement",
+      title: "Results & Prize Distribution",
       texts: [
-        "Result will be shared through email and prize distribution ceremony will be held at IT Department UIT RGPV.",
+        "Results will be shared via email.",
+        "Prize distribution will be conducted at the IT Department, UIT RGPV.",
       ],
     },
   ];

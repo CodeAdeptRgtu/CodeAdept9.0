@@ -16,25 +16,45 @@ import img9 from "../assets/img/mayank_ujawane.png";
 import img10 from "../assets/img/jayant_patel.jpg";
 import img11 from "../assets/img/manav_patel.jpg";
 import img12 from "../assets/img/rohit_yadav.jpg";
+import shreya from "../assets/img/Shreya_Rai.jpeg";
+import dhruv from "../assets/img/Dhruv_Tiwari.jpeg";
+import anush from "../assets/img/Anush_Vishwakarma.png";
 
-// Gallery photos
-import photo1 from "../assets/img/photo5.jpg";
-import photo2 from "../assets/img/photo6.jpg";
+import photo1 from "../assets/img/photo1.jpg";
+import photo2 from "../assets/img/photo2.jpg";
 import photo3 from "../assets/img/photo3.jpg";
 import photo4 from "../assets/img/photo4.jpg";
+import photo5 from "../assets/img/photo5.png";
+import photo6 from "../assets/img/photo6.png";
 
 import "./gallery.css";
 
 const Gallery = () => {
   const responsive = {
-    superLargeDesktop: { breakpoint: { max: 4000, min: 3000 }, items: 5 },
-    desktop: { breakpoint: { max: 3000, min: 1024 }, items: 3 },
-    tablet: { breakpoint: { max: 1024, min: 464 }, items: 2 },
-    mobile: { breakpoint: { max: 464, min: 0 }, items: 1 },
+    superLargeDesktop: {
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+      partialVisibilityGutter: 40,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+      partialVisibilityGutter: 30,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 768 },
+      items: 2,
+      partialVisibilityGutter: 20,
+    },
+    mobile: {
+      breakpoint: { max: 768, min: 0 },
+      items: 1,
+      partialVisibilityGutter: 10,
+    },
   };
 
   const [currentSlide, setCurrentSlide] = useState(0);
-  const galleryImages = [photo1, photo2, photo3, photo4];
+  const galleryImages = [photo5, photo6, photo1, photo2, photo3, photo4];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -61,6 +81,9 @@ const Gallery = () => {
           className="winner-carousel"
         >
           {[
+            shreya,
+            dhruv,
+            anush,
             img3,
             img1,
             img2,
@@ -75,6 +98,9 @@ const Gallery = () => {
             img6,
           ].map((img, idx) => {
             const names = [
+              "Shreya Rai",
+              "Dhruv Tiwari",
+              "Anush Viswakarma",
               "Abhay Tripathi",
               "Aditi Agrawal",
               "Arpit Pathak",
@@ -88,7 +114,11 @@ const Gallery = () => {
               "Hritik Kumar",
               "Ansh Shrivastava",
             ];
+
             const details = [
+              "1st IT (8.0)",
+              "2nd SOIT (8.0)",
+              "3rd CSE (8.0)",
               "IT 3rd (7.0)",
               "CSE 1st (7.0)",
               "CSE 2nd (7.0)",
@@ -127,7 +157,7 @@ const Gallery = () => {
 
       {/* Tagline */}
       <div className="line">
-        <p>Prepare to Code, Compete, and Conquer at CodeAdept 8.0!</p>
+        <p>Prepare to Code, Compete, and Conquer at CodeAdept 9.0!</p>
       </div>
 
       {/* Register Button - Text Only */}

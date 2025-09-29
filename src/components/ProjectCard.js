@@ -1,19 +1,22 @@
 import { Col } from "react-bootstrap";
+import { FaLinkedin } from "react-icons/fa";
 
-export const ProjectCard = ({ title, description, imgUrl }) => {
+export const ProjectCard = ({ title, description, imgUrl, linkedin }) => {
   return (
     <Col size={12} xs={6} sm={3} md={3}>
       <div className="proj-imgbx">
-        <img src={imgUrl} />
+        <img src={imgUrl} alt="team member" />
         <div className="proj-txtx">
           <h4>{title}</h4>
-          <span>{description}</span>
+          <div className="italic">{description}</div>
+          <a href={linkedin ? linkedin : "#"}target="_blank" rel="noreferrer">
+            <FaLinkedin size={20} />
+          </a>
         </div>
       </div>
     </Col>
-  )
-}
-
+  );
+};
 
 // import { Col, Card, Button } from "react-bootstrap";
 // import { useState } from "react";
