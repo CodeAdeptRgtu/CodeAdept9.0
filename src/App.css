@@ -456,8 +456,8 @@ span.navbar-text {
   transform: scale(1.05);
 }
 
-.card:hover .card-info h5,
-.card:hover .card-info p {
+.card-info h5,
+.card-info p {
   color: #fff;
   position: relative;
   z-index: 1;

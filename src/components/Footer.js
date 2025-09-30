@@ -55,7 +55,7 @@ export const Footer = () => {
                 <FaInstagram />
               </a>
               <a
-                href="https://chat.whatsapp.com/YOUR_GROUP_LINK"
+                href="https://chat.whatsapp.com/Ekfw7AoO4sC0IkOvIxZzMW"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="whatsapp-icon"

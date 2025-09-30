@@ -11,19 +11,17 @@ function Registration() {
     emailId: "",
     number: "",
     graduation: "",
+    college: "",
     branch: "",
     skills: [],
-    otherSkill: "", // for custom skill input
-    address: "",
+    otherSkill: "",
     studentId: "",
     prefferedlanguages: "",
-    college: "",
   });
 
   const [error, setError] = useState("");
   const [recaptchaToken, setRecaptchaToken] = useState("");
 
-  // List of available skills
   const availableSkills = [
     "DSA/CP",
     "CYBERSECURITY",
@@ -35,10 +33,7 @@ function Registration() {
     "Other",
   ];
 
-  // Graduation years dropdown
   const graduationYears = ["2026", "2027", "2028", "2029"];
-
-  // Preferred languages dropdown
   const preferredLanguages = [
     "Python",
     "Java",
@@ -47,9 +42,22 @@ function Registration() {
     "C",
     "Other",
   ];
+  const colleges = ["UIT RGPV", "SOIT RGPV"];
+  const branches = [
+    { short: "CSE", full: "Computer Science and Engineering" },
+    { short: "IT", full: "Information Technology" },
+    { short: "EXE", full: "Electrical Engineering" },
+    { short: "ECE", full: "Electronics and Communication Engineering" },
+    { short: "ME", full: "Mechanical Engineering" },
+    { short: "CE", full: "Civil Engineering" },
+    { short: "AU", full: "Automobile Engineering" },
+    { short: "PCT", full: "Petrochemical Technology" },
+    { short: "CS(AI/ML)", full: "Computer Science (AI/ML)" },
+    { short: "CS(DS)", full: "Computer Science (Data Science)" },
+    { short: "CSBS", full: "Computer Science and Business Systems" },
+  ];
 
   useEffect(() => {
-    // Load reCAPTCHA v3 script
     const loadReCaptcha = () => {
       const script = document.createElement("script");
       script.src =
@@ -57,22 +65,17 @@ function Registration() {
       script.async = true;
       document.body.appendChild(script);
     };
-
     loadReCaptcha();
   }, []);
 
-  // Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // Validate form
   const validateForm = () => {
-    const { emailId, number } = formData;
-
     for (const key in formData) {
-      if (key !== "otherSkill" && formData[key].length === 0) {
+      if (formData[key].length === 0 && key !== "otherSkill") {
         toast.error(
           `${key
             .replace(/([A-Z])/g, " $1")
@@ -83,13 +86,13 @@ function Registration() {
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(emailId.trim())) {
+    if (!emailRegex.test(formData.emailId.trim())) {
       toast.error("Invalid email address");
       return false;
     }
 
     const phoneRegex = /^[0-9]{10}$/;
-    if (!phoneRegex.test(number.trim())) {
+    if (!phoneRegex.test(formData.number.trim())) {
       toast.error("Phone number must be 10 digits.");
       return false;
     }
@@ -97,10 +100,8 @@ function Registration() {
     return true;
   };
 
-  // Check uniqueness in Firestore
   const checkUniqueFields = async () => {
     const { emailId, number } = formData;
-
     const emailQuery = query(
       collection(db, "registrations"),
       where("emailId", "==", emailId)
@@ -115,7 +116,6 @@ function Registration() {
         getDocs(emailQuery),
         getDocs(numberQuery),
       ]);
-
       if (!emailSnapshot.empty) {
         toast.error("Email already registered");
         return false;
@@ -129,11 +129,9 @@ function Registration() {
       toast.error("An error occurred while checking for uniqueness.");
       return false;
     }
-
     return true;
   };
 
-  // Handle form submit
   const handleRegister = async (e) => {
     e.preventDefault();
     setError("");
@@ -150,7 +148,6 @@ function Registration() {
       const isUnique = await checkUniqueFields();
       if (!isUnique) return;
 
-      // Merge skills + otherSkill
       const skillsString = [
         ...formData.skills.filter((s) => s !== "Other"),
         ...(formData.skills.includes("Other") && formData.otherSkill
@@ -171,13 +168,12 @@ function Registration() {
         emailId: "",
         number: "",
         graduation: "",
+        college: "",
         branch: "",
         skills: [],
         otherSkill: "",
-        address: "",
         studentId: "",
         prefferedlanguages: "",
-        college: "",
       });
 
       toast.success("Registration Successful");
@@ -192,12 +188,11 @@ function Registration() {
     emailId: "Email Address",
     number: "Phone Number",
     graduation: "Graduation Year",
+    college: "College Name",
     branch: "Branch of Study",
     skills: "Skills",
-    address: "Residential Address",
     studentId: "Student ID (Enrollment no.)",
     prefferedlanguages: "Preferred Language",
-    college: "College Name",
   };
 
   return (
@@ -209,6 +204,7 @@ function Registration() {
           key !== "otherSkill" && (
             <div className="registration-form__field" key={key}>
               <label htmlFor={key}>{displayLabels[key]}</label>
+
               {key === "graduation" ? (
                 <select
                   id={key}
@@ -233,9 +229,39 @@ function Registration() {
                   onChange={handleChange}
                 >
                   <option value="">Select Preferred Language</option>
-                  {preferredLanguages.map((language) => (
-                    <option key={language} value={language}>
-                      {language}
+                  {preferredLanguages.map((lang) => (
+                    <option key={lang} value={lang}>
+                      {lang}
+                    </option>
+                  ))}
+                </select>
+              ) : key === "college" ? (
+                <select
+                  id={key}
+                  className="registration-form__input"
+                  name={key}
+                  value={formData[key]}
+                  onChange={handleChange}
+                >
+                  <option value="">Select College</option>
+                  {colleges.map((college) => (
+                    <option key={college} value={college}>
+                      {college}
+                    </option>
+                  ))}
+                </select>
+              ) : key === "branch" ? (
+                <select
+                  id={key}
+                  className="registration-form__input"
+                  name={key}
+                  value={formData[key]}
+                  onChange={handleChange}
+                >
+                  <option value="">Select Branch</option>
+                  {branches.map((branch) => (
+                    <option key={branch.short} value={branch.short}>
+                      {branch.full} ({branch.short})
                     </option>
                   ))}
                 </select>
@@ -248,19 +274,18 @@ function Registration() {
                       className={`skill-btn ${
                         formData.skills.includes(skill) ? "selected" : ""
                       }`}
-                      onClick={() => {
+                      onClick={() =>
                         setFormData((prev) => ({
                           ...prev,
                           skills: prev.skills.includes(skill)
                             ? prev.skills.filter((s) => s !== skill)
                             : [...prev.skills, skill],
-                        }));
-                      }}
+                        }))
+                      }
                     >
                       {skill}
                     </button>
                   ))}
-
                   {formData.skills.includes("Other") && (
                     <input
                       type="text"
@@ -276,16 +301,6 @@ function Registration() {
                     />
                   )}
                 </div>
-              ) : key === "address" ? (
-                <textarea
-                  id={key}
-                  className="registration-form__input"
-                  name={key}
-                  rows="3"
-                  placeholder={displayLabels[key]}
-                  value={formData[key]}
-                  onChange={handleChange}
-                />
               ) : (
                 <input
                   id={key}

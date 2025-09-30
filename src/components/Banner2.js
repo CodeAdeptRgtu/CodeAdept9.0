@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../assets/img/DoIT .png";
+import logo from "../assets/img/Code_Adept_White.png";
 import { Link } from "react-router-dom";
 import "./Banner2.css";
 
