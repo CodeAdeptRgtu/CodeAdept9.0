@@ -2,16 +2,17 @@ import { Container, Row, Col } from "react-bootstrap";
 import { ProjectCard } from "./ProjectCard";
 import teamImg1 from "../assets/img/ritesh.jpg";
 import teamImg2 from "../assets/img/aman.jpg";
-import teamImg4 from "../assets/img/mitanshi.jpg";
+import teamImg3 from "../assets/img/mitanshi.jpg";
+import teamImg4 from "../assets/img/Srujan.jpg";
 import teamImg5 from "../assets/img/Bharat.jpg";
-import teamImg6 from "../assets/img/uday.jpg";
-import teamImg7 from "../assets/img/archita.jpg";
+import teamImg6 from "../assets/img/Khushi_Nigam.jpg";
+import teamImg7 from "../assets/img/Khushi_Yadav.jpg";
 import teamImg8 from "../assets/img/vandana.jpg";
-import teamImg9 from "../assets/img/yogiraj.jpg";
-import teamImg10 from "../assets/img/aayush.jpg";
+import teamImg9 from "../assets/img/Jaydeep.jpg";
 import teamImg11 from "../assets/img/shreya.jpg";
 import teamImg12 from "../assets/img/sunnidhi.jpg";
-import teamImg14 from "../assets/img/sadhvi.jpg";
+import teamImg13 from "../assets/img/Deepansh.jpg";
+import teamImg14 from "../assets/img/Vishvjeet.jpg";
 
 import colorSharp2 from "../assets/img/color-sharp2.png";
 import "animate.css";
@@ -28,14 +29,14 @@ export const Teams = () => {
     },
     {
       title: "Aman Pachouri",
-      description: "Executive Head",
+      description: "Co-Executive",
       imgUrl: teamImg2,
       linkedin: "https://www.linkedin.com/in/aman-pachouri0205",
     },
     {
       title: "Mitanshi Bhawsar",
       description: "Technical Lead",
-      imgUrl: teamImg4,
+      imgUrl: teamImg3,
       linkedin: "",
     },
     {
@@ -53,12 +54,12 @@ export const Teams = () => {
     {
       title: "Khushi Nigam",
       description: "Management",
-      imgUrl: teamImg8,
+      imgUrl: teamImg6,
       linkedin: "https://www.linkedin.com/in/khushi-nigam-5bb81b336/",
     },
     {
       title: "Vandana Patidar",
-      description: "Marketing Lead",
+      description: "Content and Marketing Lead",
       imgUrl: teamImg8,
       linkedin: "https://www.linkedin.com/in/vandana-patidar-232070315",
     },
@@ -69,10 +70,10 @@ export const Teams = () => {
       linkedin: "https://www.linkedin.com/in/khushi-yadav-a3b737332/",
     },
     {
-      title: "Yogiraj Patidar",
+      title: "Jaydeeep Bakode",
       description: "Video Editor",
       imgUrl: teamImg9,
-      linkedin: "",
+      linkedin: "https://www.linkedin.com/in/jaydeep-bakode-9b6308346/",
     },
     {
       title: "Shreya Patel",
@@ -87,13 +88,13 @@ export const Teams = () => {
       linkedin: "",
     },
     {
-      title: "Mitanshi Bhawsar",
+      title: "Deepansh Vyas",
       description: "Volunteer",
-      imgUrl: "",
+      imgUrl: teamImg13,
       linkedin: "",
     },
     {
-      title: "Sadhvi Ladhave",
+      title: "Vishvjeet kannojiya",
       description: "Volunteer",
       imgUrl: teamImg14,
       linkedin: "",

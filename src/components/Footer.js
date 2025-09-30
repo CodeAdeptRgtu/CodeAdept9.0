@@ -1,59 +1,68 @@
 import { Container, Row, Col } from "react-bootstrap";
+import { FaLinkedin, FaTwitter, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import logo from "../assets/img/DoIT .png";
-import navIcon1 from "../assets/img/nav-icon1.svg";
-import navIcon2 from "../assets/img/nav-icon2.svg";
-import navIcon3 from "../assets/img/nav-icon3.svg";
 import "./Footer.css";
 
 export const Footer = () => {
   return (
     <footer className="footer">
       <Container>
-        <Row className="footer-row">
+        <Row className="footer-row align-items-center justify-content-between">
           {/* Logo */}
-          <Col xs={12} className="footer-logo">
+          <Col xs={12} md={3} className="footer-logo text-center text-md-start">
             <img src={logo} alt="Logo" />
           </Col>
 
           {/* Contact Info */}
-          <Col xs={12} className="footer-contact">
+          <Col
+            xs={12}
+            md={4}
+            className="footer-contact text-center text-md-start"
+          >
             <p>
-              Mobile: <a href="tel:+919691497996">+91 9691497996</a>
+              Mobile: <a href="tel:+919691497996">+91 9981922559, 7389684784</a>
             </p>
             <p>
               Email:{" "}
               <a href="mailto:codeadept@doitcoding.club">
-                codeadept@doitcoding.club
+                codeadeptrgtu@gmail.com
               </a>
             </p>
           </Col>
 
           {/* Social Icons */}
-          <Col xs={12} className="footer-social">
+          <Col xs={12} md={3} className="footer-social text-center text-md-end">
             <div className="social-icon">
               <a
                 href="https://www.linkedin.com/showcase/codeadept"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src={navIcon1} alt="LinkedIn" />
+                <FaLinkedin />
               </a>
               <a
                 href="https://x.com/codeadept_"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src={navIcon2} alt="Twitter" />
+                <FaTwitter />
               </a>
               <a
                 href="https://www.instagram.com/codeadept/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src={navIcon3} alt="Instagram" />
+                <FaInstagram />
+              </a>
+              <a
+                href="https://chat.whatsapp.com/YOUR_GROUP_LINK"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="whatsapp-icon"
+              >
+                <FaWhatsapp />
               </a>
             </div>
-            <p className="copyright">© 2025 CodeAdept. All Rights Reserved.</p>
           </Col>
         </Row>
       </Container>

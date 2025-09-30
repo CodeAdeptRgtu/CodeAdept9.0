@@ -32,39 +32,44 @@ const Info = () => {
         <h2 className="card-title">Competition Overview</h2>
         <p className="card-text">
           Hosted by the Department of Information Technology (DoIT), CodeAdept
-          is the premier state-level inter-college coding competition where the
-          best coders come together for a battle of logic and programming
-          mastery. Here is the roadmap guiding you through every step of
-          competition.
+          9.0 is a coding competition where the best coders showcase their
+          skills. Participate, learn, and challenge yourself through multiple
+          rounds of problem-solving and coding excellence.
         </p>
       </div>
 
       {/* Rounds */}
       <div className="rounds">
         <div className="round-card card">
-          <h3 className="round-title">Round 1: Aptitude Test</h3>
+          <h3 className="round-title">Round 1: ONLINE ASSESSMENT</h3>
           <p className="card-text">
-            The journey begins with an online aptitude test to challenge your
-            logical reasoning, problem-solving, and analytical skills. This
-            round assesses mathematics, logic, and algorithmic thinking.
+            The journey begins with an online assessment designed to test your
+            aptitude and basic coding skills. This round includes 45 MCQs
+            covering logical reasoning, analytical thinking, and programming
+            fundamentals. Duration: 45 minutes.
           </p>
         </div>
 
         <div className="round-card card">
-          <h3 className="round-title">Round 2: Basic Coding</h3>
+          <h3 className="round-title">
+            Round 2: CODING ROUND - Technical Round 1
+          </h3>
           <p className="card-text">
-            This round focuses on testing your fundamental programming skills.
-            Solve beginner-friendly coding tasks that evaluate your knowledge of
-            syntax, logic building, and core programming concepts.
+            This round focuses on Data Structures & Algorithms (DSA). Solve 6
+            problem statements to test problem-solving skills, algorithmic
+            knowledge, and writing optimized code. Duration: 90 minutes.
           </p>
         </div>
 
         <div className="round-card card">
-          <h3 className="round-title">Round 3: Offline Coding Battle</h3>
+          <h3 className="round-title">
+            Round 3: ONSITE CODING SPRINT - Technical Round 2
+          </h3>
           <p className="card-text">
-            The ultimate offline showdown! Compete face-to-face against top
-            coders, solving advanced algorithmic problems including graph
-            theory, segment trees, and more.
+            The ultimate offline coding showdown! Compete face-to-face against
+            top coders in a high-pressure environment. Solve 4 advanced DSA
+            problems within 90 minutes. Only the best coders will emerge
+            victorious.
           </p>
         </div>
       </div>

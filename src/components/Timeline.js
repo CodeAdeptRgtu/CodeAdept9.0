@@ -26,29 +26,29 @@ export const Timeline = () => {
     },
     {
       date: "Oct 11, 2025",
-      title: "Round 1",
+      title: "Round 1: ONLINE ASSESSMENT",
       texts: [
-        "Aptitude & Reasoning: 30 questions.",
-        "Duration: 45 minutes.",
-        "This round evaluates logical reasoning, problem-solving, and technical aptitude.",
+        "The journey begins with an online assessment designed to test your aptitude and basic coding ability.",
+        "This round includes 45 MCQs covering various topics.",
+        "You’ll have 45 minutes to showcase your logical reasoning, analytical thinking, and programming fundamentals.",
       ],
     },
     {
       date: "Oct 12, 2025",
-      title: "Round 2",
+      title: "Round 2: CODING ROUND - Technical Round 1",
       texts: [
-        "Coding Challenges: 6 questions.",
-        "Duration: 90 minutes.",
-        "This round focuses on debugging and solving intermediate-level coding problems.",
+        "This round shifts focus to Data Structures & Algorithms (DSA).",
+        "You’ll solve 6 problem statements that evaluate your problem-solving skills, knowledge of algorithms, and efficiency in writing optimized code.",
+        "Duration: 90 minutes. It's all about speed, accuracy, and logical depth.",
       ],
     },
     {
-      date: "Oct 13, 2025",
-      title: "Final Round",
+      date: "Oct 14, 2025",
+      title: "Round 3: ONSITE CODING SPRINT - Technical Round 2",
       texts: [
-        "Core Coding Challenges: 5 questions.",
-        "Duration: 90 minutes.",
-        "Choose your preferred programming language and tackle advanced coding challenges.",
+        "The ultimate offline coding showdown! Compete face-to-face with top coders in a high-pressure environment.",
+        "This sprint challenges you with 4 advanced DSA problems to be solved within 90 minutes.",
+        "Only the best logical thinkers and coders will emerge victorious.",
       ],
     },
     {

@@ -1,3 +1,4 @@
+/* General timeline section */
 .timeline-section {
   padding: 80px 2vw;
   background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
@@ -22,6 +23,7 @@
   z-index: 1;
 }
 
+/* Timeline cards wrapper */
 .timeline-cards {
   display: flex;
   flex-direction: column;
@@ -32,6 +34,7 @@
   margin: 0 auto;
 }
 
+/* Vertical line on desktop */
 .timeline-cards::before {
   content: "";
   position: absolute;
@@ -45,6 +48,7 @@
   z-index: 0;
 }
 
+/* Timeline card wrapper */
 .timeline-card-wrapper {
   display: flex;
   width: 100%;
@@ -59,20 +63,7 @@
   transform: translateY(0);
 }
 
-@media (min-width: 1025px) {
-  .timeline-card-wrapper.odd {
-    justify-content: flex-start;
-  }
-
-  .timeline-card-wrapper.even {
-    justify-content: flex-end;
-  }
-
-  .timeline-card::after {
-    display: block;
-  }
-}
-
+/* Card design */
 .timeline-card {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 25px;
@@ -90,6 +81,7 @@
   box-shadow: 0 12px 25px rgba(255, 110, 196, 0.2);
 }
 
+/* Timeline indicator dot */
 .timeline-card::after {
   content: "";
   position: absolute;
@@ -104,6 +96,14 @@
 }
 
 @media (min-width: 1025px) {
+  .timeline-card-wrapper.odd {
+    justify-content: flex-start;
+  }
+
+  .timeline-card-wrapper.even {
+    justify-content: flex-end;
+  }
+
   .timeline-card-wrapper.odd .timeline-card::after {
     right: -8px;
   }
@@ -113,6 +113,7 @@
   }
 }
 
+/* Card text */
 .timeline-date {
   font-size: 1.3rem;
   font-weight: 700;
@@ -137,7 +138,9 @@
   margin: 6px 0;
 }
 
+/* ---------------- MOBILE IMPROVEMENTS ---------------- */
 
+/* Tablet / small screens */
 @media (max-width: 1024px) {
   .timeline-card-wrapper,
   .timeline-card-wrapper.odd,
@@ -151,12 +154,21 @@
     border-radius: 20px;
   }
 
-  .timeline-cards::before,
+  .timeline-cards::before {
+    left: 20px; /* Vertical accent line on left */
+    height: auto;
+    width: 3px;
+    background: linear-gradient(to bottom, #ff6ec4, #7873f5);
+  }
+
   .timeline-card::after {
-    display: none !important;
+    display: block;
+    left: -11px; /* Dot aligned with vertical line */
+    top: 30px;
   }
 }
 
+/* Mobile phones */
 @media (max-width: 480px) {
   .timeline-card {
     width: 100%;
@@ -178,6 +190,28 @@
   }
 
   .timeline-card-text {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
+
+  /* Add some spacing between cards */
+  .timeline-card-wrapper {
+    margin-bottom: 30px;
+  }
+
+  /* Dot and line styling for mobile */
+  .timeline-cards::before {
+    display: block;
+    left: 15px;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(to bottom, #ff6ec4, #7873f5);
+  }
+
+  .timeline-card::after {
+    left: -9px;
+    top: 20px;
+    width: 12px;
+    height: 12px;
   }
 }

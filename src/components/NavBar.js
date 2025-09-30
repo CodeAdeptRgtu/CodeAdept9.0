@@ -43,7 +43,11 @@ export const NavBar = () => {
           to="/"
           onClick={() => onUpdateActiveLink("home")}
         >
-          <img src={logo} alt="Codeadept" />
+          <img
+            src={logo}
+            alt="Codeadept"
+            style={{ maxHeight: "60px", width: "auto" }}
+          />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={toggleNavbar}>
           <span className="navbar-toggler-icon"></span>

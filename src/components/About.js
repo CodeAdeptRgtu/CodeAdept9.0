@@ -3,15 +3,12 @@ import colorSharp2 from "../assets/img/color-sharp2.png";
 import "./About.css";
 
 export const About = () => {
-  //  JS functions
-
   return (
-    //   jsx file
     <section className="Detail" id="Detail">
       <Container>
         <Row>
           <Col size={12}>
-            <h2>Coding Club</h2>
+            <h2>DoIT Coding Club</h2>
             <p>
               Coding club is an initiative of the Department of Information
               Technology, UIT RGPV. The purpose of the Coding Club is to foster
@@ -23,7 +20,6 @@ export const About = () => {
               <div className="Detail-item">
                 <div className="Detail-event">
                   <h3>Goal</h3>
-
                   <p>
                     The goal of the Coding Club is to create a supportive
                     community where members can enhance their programming skills

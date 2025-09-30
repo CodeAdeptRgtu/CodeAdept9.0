@@ -15,8 +15,8 @@
 }
 
 .content img {
-  height: 18vh; /* Increased logo size */
-  max-height: 200px; /* Prevent it from being too huge */
+  height: 22vh;
+  max-height: 250px;
   filter: drop-shadow(0 0 6px #ff6ec4);
   transition: transform 0.4s ease, filter 0.4s ease;
 }
@@ -68,8 +68,8 @@
     padding: 12px 26px;
   }
   .content img {
-    height: 14vh;
-    max-height: 150px;
+    height: 16vh;
+    max-height: 200px;
   }
 }
 
@@ -86,7 +86,7 @@
     padding: 10px 22px;
   }
   .content img {
-    height: 12vh;
+    height: 14vh;
     max-height: 120px;
   }
 }
