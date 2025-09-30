@@ -16,11 +16,11 @@ export const Timeline = () => {
       ],
     },
     {
-      date: "Sep 30, 2025",
+      date: "Oct 5, 2025",
       title: "Mock Test",
       texts: [
-        "Includes 10 aptitude and 10 coding questions.",
-        "Duration: 120 minutes.",
+        "Includes 45 questions.",
+        "Duration: 45 minutes.",
         "The mock test will help you get familiar with the format and prepare better.",
       ],
     },
