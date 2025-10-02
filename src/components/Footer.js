@@ -25,7 +25,7 @@ export const Footer = () => {
             <p>
               Email:{" "}
               <a href="mailto:codeadept@doitcoding.club">
-                codeadeptrgtu@gmail.com
+                codeadept@doitcoding.club
               </a>
             </p>
           </Col>

@@ -12,6 +12,7 @@ function Registration() {
     number: "",
     graduation: "",
     college: "",
+    otherCollege: "", // added for Other college input
     branch: "",
     skills: [],
     otherSkill: "",
@@ -42,7 +43,7 @@ function Registration() {
     "C",
     "Other",
   ];
-  const colleges = ["UIT RGPV", "SOIT RGPV"];
+  const colleges = ["UIT RGPV", "SOIT RGPV", "Other"]; // added Other
   const branches = [
     { short: "CSE", full: "Computer Science and Engineering" },
     { short: "IT", full: "Information Technology" },
@@ -75,7 +76,11 @@ function Registration() {
 
   const validateForm = () => {
     for (const key in formData) {
-      if (formData[key].length === 0 && key !== "otherSkill") {
+      if (
+        (formData[key] === "" || formData[key].length === 0) &&
+        key !== "otherSkill" &&
+        key !== "otherCollege"
+      ) {
         toast.error(
           `${key
             .replace(/([A-Z])/g, " $1")
@@ -83,6 +88,11 @@ function Registration() {
         );
         return false;
       }
+    }
+
+    if (formData.college === "Other" && formData.otherCollege.trim() === "") {
+      toast.error("Please enter your college name.");
+      return false;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -155,8 +165,14 @@ function Registration() {
           : []),
       ].join(", ");
 
+      const finalCollege =
+        formData.college === "Other" && formData.otherCollege
+          ? formData.otherCollege
+          : formData.college;
+
       const docRef = await addDoc(collection(db, "registrations"), {
         ...formData,
+        college: finalCollege,
         skills: skillsString,
         recaptchaToken: token,
       });
@@ -169,6 +185,7 @@ function Registration() {
         number: "",
         graduation: "",
         college: "",
+        otherCollege: "",
         branch: "",
         skills: [],
         otherSkill: "",
@@ -201,7 +218,8 @@ function Registration() {
 
       {Object.keys(formData).map(
         (key) =>
-          key !== "otherSkill" && (
+          key !== "otherSkill" &&
+          key !== "otherCollege" && (
             <div className="registration-form__field" key={key}>
               <label htmlFor={key}>{displayLabels[key]}</label>
 
@@ -236,20 +254,36 @@ function Registration() {
                   ))}
                 </select>
               ) : key === "college" ? (
-                <select
-                  id={key}
-                  className="registration-form__input"
-                  name={key}
-                  value={formData[key]}
-                  onChange={handleChange}
-                >
-                  <option value="">Select College</option>
-                  {colleges.map((college) => (
-                    <option key={college} value={college}>
-                      {college}
-                    </option>
-                  ))}
-                </select>
+                <>
+                  <select
+                    id={key}
+                    className="registration-form__input"
+                    name={key}
+                    value={formData[key]}
+                    onChange={handleChange}
+                  >
+                    <option value="">Select College</option>
+                    {colleges.map((college) => (
+                      <option key={college} value={college}>
+                        {college}
+                      </option>
+                    ))}
+                  </select>
+                  {formData.college === "Other" && (
+                    <input
+                      type="text"
+                      className="registration-form__input mt-2"
+                      placeholder="Enter your college name"
+                      value={formData.otherCollege}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          otherCollege: e.target.value,
+                        }))
+                      }
+                    />
+                  )}
+                </>
               ) : key === "branch" ? (
                 <select
                   id={key}
