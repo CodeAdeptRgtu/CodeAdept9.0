@@ -12,7 +12,7 @@ function Registration() {
     number: "",
     graduation: "",
     college: "",
-    otherCollege: "", // added for Other college input
+    otherCollege: "",
     branch: "",
     skills: [],
     otherSkill: "",
@@ -22,6 +22,7 @@ function Registration() {
 
   const [error, setError] = useState("");
   const [recaptchaToken, setRecaptchaToken] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const availableSkills = [
     "DSA/CP",
@@ -43,7 +44,7 @@ function Registration() {
     "C",
     "Other",
   ];
-  const colleges = ["UIT RGPV", "SOIT RGPV", "Other"]; // added Other
+  const colleges = ["UIT RGPV", "SOIT RGPV", "Other"];
   const branches = [
     { short: "CSE", full: "Computer Science and Engineering" },
     { short: "IT", full: "Information Technology" },
@@ -59,14 +60,11 @@ function Registration() {
   ];
 
   useEffect(() => {
-    const loadReCaptcha = () => {
-      const script = document.createElement("script");
-      script.src =
-        "https://www.google.com/recaptcha/api.js?render=6LcpSGUqAAAAAFfQKc6O-qAz9FkUCjcesz-9qPQT";
-      script.async = true;
-      document.body.appendChild(script);
-    };
-    loadReCaptcha();
+    const script = document.createElement("script");
+    script.src =
+      "https://www.google.com/recaptcha/api.js?render=6LcpSGUqAAAAAFfQKc6O-qAz9FkUCjcesz-9qPQT";
+    script.async = true;
+    document.body.appendChild(script);
   }, []);
 
   const handleChange = (e) => {
@@ -111,10 +109,12 @@ function Registration() {
   };
 
   const checkUniqueFields = async () => {
-    const { emailId, number } = formData;
+    const normalizedEmail = formData.emailId.trim().toLowerCase();
+    const { number } = formData;
+
     const emailQuery = query(
       collection(db, "registrations"),
-      where("emailId", "==", emailId)
+      where("emailId", "==", normalizedEmail)
     );
     const numberQuery = query(
       collection(db, "registrations"),
@@ -146,8 +146,10 @@ function Registration() {
     e.preventDefault();
     setError("");
 
+    if (loading) return;
     if (!validateForm()) return;
 
+    setLoading(true);
     try {
       const token = await window.grecaptcha.execute(
         "6LcpSGUqAAAAAFfQKc6O-qAz9FkUCjcesz-9qPQT",
@@ -156,8 +158,12 @@ function Registration() {
       setRecaptchaToken(token);
 
       const isUnique = await checkUniqueFields();
-      if (!isUnique) return;
+      if (!isUnique) {
+        setLoading(false);
+        return;
+      }
 
+      const normalizedEmail = formData.emailId.trim().toLowerCase();
       const skillsString = [
         ...formData.skills.filter((s) => s !== "Other"),
         ...(formData.skills.includes("Other") && formData.otherSkill
@@ -172,12 +178,14 @@ function Registration() {
 
       const docRef = await addDoc(collection(db, "registrations"), {
         ...formData,
+        emailId: normalizedEmail,
         college: finalCollege,
         skills: skillsString,
         recaptchaToken: token,
       });
 
       console.log("Document written with ID: ", docRef.id);
+      toast.success("Registration Successful");
 
       setFormData({
         fullName: "",
@@ -192,11 +200,11 @@ function Registration() {
         studentId: "",
         prefferedlanguages: "",
       });
-
-      toast.success("Registration Successful");
     } catch (error) {
       console.error("Error adding document: ", error);
       toast.error("An error occurred during registration.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -208,7 +216,7 @@ function Registration() {
     college: "College Name",
     branch: "Branch of Study",
     skills: "Skills",
-    studentId: "Student ID (Enrollment no.)",
+    studentId: "Student ID (Enrollment No.)",
     prefferedlanguages: "Preferred Language",
   };
 
@@ -352,8 +360,12 @@ function Registration() {
       {error && <p className="error-message">{error}</p>}
 
       <div className="registration-form__submit">
-        <button type="submit" className="registration-form__button">
-          Register
+        <button
+          type="submit"
+          className="registration-form__button"
+          disabled={loading}
+        >
+          {loading ? "Registering..." : "Register"}
         </button>
         <ToastContainer />
       </div>

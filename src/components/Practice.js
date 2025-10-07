@@ -1,4 +1,13 @@
-import { Container, Row, Col, Table, Badge } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Table,
+  Badge,
+  Tabs,
+  Tab,
+  Button,
+} from "react-bootstrap";
 import "./Practice.css";
 
 function Practice() {
@@ -203,61 +212,89 @@ function Practice() {
       <Container>
         <Row>
           <Col size={12}>
-            <h2 className="practice-title mt-2">DSA Coding Questions</h2>
+            <h2 className="practice-title mt-2">Practice</h2>
             <p className="practice-subtitle">
-              Below is the curated list of <strong>DSA Coding Questions</strong>{" "}
-              for practice.
-              <br />
-              <strong>
-                Aptitude mock test will be available after some time.
-              </strong>
+              Sharpen your skills with <strong>DSA</strong> and{" "}
+              <strong>Aptitude</strong> practice before the competition.
             </p>
-            <Table
-              striped
-              bordered
-              hover
-              responsive
-              variant="dark"
-              className="practice-table"
+
+            <Tabs
+              defaultActiveKey="dsa"
+              id="practice-tabs"
+              className="mb-4 practice-tabs"
+              fill
             >
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Question</th>
-                  <th>Topic</th>
-                  <th>Difficulty</th>
-                  <th>Practice</th>
-                </tr>
-              </thead>
-              <tbody>
-                {questions.map((q, index) => (
-                  <tr key={index}>
-                    <td>{index + 1}</td>
-                    <td>{q.title}</td>
-                    <td>{q.topic}</td>
-                    <td>
-                      <Badge bg={getBadgeVariant(q.level)}>{q.level}</Badge>
-                    </td>
-                    <td>
-                      {q.link ? (
-                        <a
-                          href={q.link}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="practice-link"
-                        >
-                          Solve Now
-                        </a>
-                      ) : (
-                        <span className="practice-link disabled">
-                          Not Available
-                        </span>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
+              {/* DSA TAB */}
+              <Tab eventKey="dsa" title="💻 DSA Questions">
+                <Table
+                  striped
+                  bordered
+                  hover
+                  responsive
+                  variant="dark"
+                  className="practice-table"
+                >
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Question</th>
+                      <th>Topic</th>
+                      <th>Difficulty</th>
+                      <th>Practice</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {questions.map((q, index) => (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{q.title}</td>
+                        <td>{q.topic}</td>
+                        <td>
+                          <Badge bg={getBadgeVariant(q.level)}>{q.level}</Badge>
+                        </td>
+                        <td>
+                          {q.link ? (
+                            <a
+                              href={q.link}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="practice-link"
+                            >
+                              Solve Now
+                            </a>
+                          ) : (
+                            <span className="practice-link disabled">
+                              Not Available
+                            </span>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </Table>
+              </Tab>
+
+              {/* APTITUDE TAB */}
+              <Tab eventKey="aptitude" title="🧠 Aptitude Quiz">
+                <div className="aptitude-section text-center mt-5">
+                  <h3 className="aptitude-title mb-3">Aptitude Quiz</h3>
+                  <p className="aptitude-desc mb-4">
+                    Test your logical reasoning and analytical skills.
+                    Participate in the our mock aptitude test to make yourself .
+                  </p>
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    href="https://unstop.com/o/s879BxY?lb=ctdDopwz&utm_medium=Share&utm_source=codeadep9586&utm_campaign=Online_coding_challenge"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="aptitude-btn"
+                  >
+                    Practice Aptitude
+                  </Button>
+                </div>
+              </Tab>
+            </Tabs>
           </Col>
         </Row>
       </Container>

@@ -16,7 +16,7 @@ export const Timeline = () => {
       ],
     },
     {
-      date: "Oct 5, 2025",
+      date: "Oct 8, 2025",
       title: "Mock Test",
       texts: [
         "Includes 45 questions.",
