@@ -77,7 +77,9 @@ function Registration() {
       if (
         (formData[key] === "" || formData[key].length === 0) &&
         key !== "otherSkill" &&
-        key !== "otherCollege"
+        key !== "otherCollege" &&
+        key !== "skills" &&
+        key !== "prefferedlanguages"
       ) {
         toast.error(
           `${key
@@ -180,7 +182,8 @@ function Registration() {
         ...formData,
         emailId: normalizedEmail,
         college: finalCollege,
-        skills: skillsString,
+        skills: skillsString || "None",
+        prefferedlanguages: formData.prefferedlanguages || "None",
         recaptchaToken: token,
       });
 
@@ -215,9 +218,9 @@ function Registration() {
     graduation: "Graduation Year",
     college: "College Name",
     branch: "Branch of Study",
-    skills: "Skills",
+    skills: "Skills (optional)",
     studentId: "Student ID (Enrollment No.)",
-    prefferedlanguages: "Preferred Language",
+    prefferedlanguages: "Preferred Language (optional)",
   };
 
   return (
@@ -254,7 +257,7 @@ function Registration() {
                   value={formData[key]}
                   onChange={handleChange}
                 >
-                  <option value="">Select Preferred Language</option>
+                  <option value="">Select Preferred Language (optional)</option>
                   {preferredLanguages.map((lang) => (
                     <option key={lang} value={lang}>
                       {lang}
