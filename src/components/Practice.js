@@ -219,11 +219,33 @@ function Practice() {
             </p>
 
             <Tabs
-              defaultActiveKey="dsa"
+              defaultActiveKey="aptitude"
               id="practice-tabs"
               className="mb-4 practice-tabs"
               fill
             >
+              {/* APTITUDE TAB */}
+              <Tab eventKey="aptitude" title="🧠 Aptitude Quiz">
+                <div className="aptitude-section text-center mt-5">
+                  <h3 className="aptitude-title mb-3">Aptitude Quiz</h3>
+                  <p className="aptitude-desc mb-4">
+                    Test your logical reasoning and analytical skills.
+                    Participate in our mock aptitude test to make yourself
+                    placement-ready.
+                  </p>
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    href="https://unstop.com/o/s879BxY?lb=ctdDopwz&utm_medium=Share&utm_source=codeadep9586&utm_campaign=Online_coding_challenge"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="aptitude-btn"
+                  >
+                    Practice Aptitude
+                  </Button>
+                </div>
+              </Tab>
+
               {/* DSA TAB */}
               <Tab eventKey="dsa" title="💻 DSA Questions">
                 <Table
@@ -272,27 +294,6 @@ function Practice() {
                     ))}
                   </tbody>
                 </Table>
-              </Tab>
-
-              {/* APTITUDE TAB */}
-              <Tab eventKey="aptitude" title="🧠 Aptitude Quiz">
-                <div className="aptitude-section text-center mt-5">
-                  <h3 className="aptitude-title mb-3">Aptitude Quiz</h3>
-                  <p className="aptitude-desc mb-4">
-                    Test your logical reasoning and analytical skills.
-                    Participate in the our mock aptitude test to make yourself .
-                  </p>
-                  <Button
-                    variant="primary"
-                    size="lg"
-                    href="https://unstop.com/o/s879BxY?lb=ctdDopwz&utm_medium=Share&utm_source=codeadep9586&utm_campaign=Online_coding_challenge"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="aptitude-btn"
-                  >
-                    Practice Aptitude
-                  </Button>
-                </div>
               </Tab>
             </Tabs>
           </Col>
