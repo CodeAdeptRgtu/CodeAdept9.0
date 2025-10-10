@@ -6,225 +6,240 @@ import "react-toastify/dist/ReactToastify.css";
 import "./Registration.css";
 
 function Registration() {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    emailId: "",
-    number: "",
-    graduation: "",
-    college: "",
-    otherCollege: "",
-    branch: "",
-    skills: [],
-    otherSkill: "",
-    studentId: "",
-    prefferedlanguages: "",
-  });
+  // const [formData, setFormData] = useState({
+  //   fullName: "",
+  //   emailId: "",
+  //   number: "",
+  //   graduation: "",
+  //   college: "",
+  //   otherCollege: "",
+  //   branch: "",
+  //   skills: [],
+  //   otherSkill: "",
+  //   studentId: "",
+  //   prefferedlanguages: "",
+  // });
 
-  const [error, setError] = useState("");
-  const [recaptchaToken, setRecaptchaToken] = useState("");
-  const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState("");
+  // const [recaptchaToken, setRecaptchaToken] = useState("");
+  // const [loading, setLoading] = useState(false);
 
-  const availableSkills = [
-    "DSA/CP",
-    "CYBERSECURITY",
-    "WEB DEVELOPMENT",
-    "APP DEVELOPMENT",
-    "BLOCKCHAIN",
-    "AI/ML",
-    "DATA SCIENCE",
-    "Other",
-  ];
+  // const availableSkills = [
+  //   "DSA/CP",
+  //   "CYBERSECURITY",
+  //   "WEB DEVELOPMENT",
+  //   "APP DEVELOPMENT",
+  //   "BLOCKCHAIN",
+  //   "AI/ML",
+  //   "DATA SCIENCE",
+  //   "Other",
+  // ];
 
-  const graduationYears = ["2026", "2027", "2028", "2029"];
-  const preferredLanguages = [
-    "Python",
-    "Java",
-    "JavaScript",
-    "C++",
-    "C",
-    "Other",
-  ];
-  const colleges = ["UIT RGPV", "SOIT RGPV", "Other"];
-  const branches = [
-    { short: "CSE", full: "Computer Science and Engineering" },
-    { short: "IT", full: "Information Technology" },
-    { short: "EXE", full: "Electrical Engineering" },
-    { short: "ECE", full: "Electronics and Communication Engineering" },
-    { short: "ME", full: "Mechanical Engineering" },
-    { short: "CE", full: "Civil Engineering" },
-    { short: "AU", full: "Automobile Engineering" },
-    { short: "PCT", full: "Petrochemical Technology" },
-    { short: "CS(AI/ML)", full: "Computer Science (AI/ML)" },
-    { short: "CS(DS)", full: "Computer Science (Data Science)" },
-    { short: "CSBS", full: "Computer Science and Business Systems" },
-  ];
+  // const graduationYears = ["2026", "2027", "2028", "2029"];
+  // const preferredLanguages = [
+  //   "Python",
+  //   "Java",
+  //   "JavaScript",
+  //   "C++",
+  //   "C",
+  //   "Other",
+  // ];
+  // const colleges = ["UIT RGPV", "SOIT RGPV", "Other"];
+  // const branches = [
+  //   { short: "CSE", full: "Computer Science and Engineering" },
+  //   { short: "IT", full: "Information Technology" },
+  //   { short: "EXE", full: "Electrical Engineering" },
+  //   { short: "ECE", full: "Electronics and Communication Engineering" },
+  //   { short: "ME", full: "Mechanical Engineering" },
+  //   { short: "CE", full: "Civil Engineering" },
+  //   { short: "AU", full: "Automobile Engineering" },
+  //   { short: "PCT", full: "Petrochemical Technology" },
+  //   { short: "CS(AI/ML)", full: "Computer Science (AI/ML)" },
+  //   { short: "CS(DS)", full: "Computer Science (Data Science)" },
+  //   { short: "CSBS", full: "Computer Science and Business Systems" },
+  // ];
 
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src =
-      "https://www.google.com/recaptcha/api.js?render=6LcpSGUqAAAAAFfQKc6O-qAz9FkUCjcesz-9qPQT";
-    script.async = true;
-    document.body.appendChild(script);
-  }, []);
+  // useEffect(() => {
+  //   const script = document.createElement("script");
+  //   script.src =
+  //     "https://www.google.com/recaptcha/api.js?render=6LcpSGUqAAAAAFfQKc6O-qAz9FkUCjcesz-9qPQT";
+  //   script.async = true;
+  //   document.body.appendChild(script);
+  // }, []);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData({ ...formData, [name]: value });
+  // };
 
-  const validateForm = () => {
-    for (const key in formData) {
-      if (
-        (formData[key] === "" || formData[key].length === 0) &&
-        key !== "otherSkill" &&
-        key !== "otherCollege" &&
-        key !== "skills" &&
-        key !== "prefferedlanguages"
-      ) {
-        toast.error(
-          `${key
-            .replace(/([A-Z])/g, " $1")
-            .replace(/^./, (str) => str.toUpperCase())} is required.`
-        );
-        return false;
-      }
-    }
+  // const validateForm = () => {
+  //   for (const key in formData) {
+  //     if (
+  //       (formData[key] === "" || formData[key].length === 0) &&
+  //       key !== "otherSkill" &&
+  //       key !== "otherCollege" &&
+  //       key !== "skills" &&
+  //       key !== "prefferedlanguages"
+  //     ) {
+  //       toast.error(
+  //         `${key
+  //           .replace(/([A-Z])/g, " $1")
+  //           .replace(/^./, (str) => str.toUpperCase())} is required.`
+  //       );
+  //       return false;
+  //     }
+  //   }
 
-    if (formData.college === "Other" && formData.otherCollege.trim() === "") {
-      toast.error("Please enter your college name.");
-      return false;
-    }
+  //   if (formData.college === "Other" && formData.otherCollege.trim() === "") {
+  //     toast.error("Please enter your college name.");
+  //     return false;
+  //   }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.emailId.trim())) {
-      toast.error("Invalid email address");
-      return false;
-    }
+  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  //   if (!emailRegex.test(formData.emailId.trim())) {
+  //     toast.error("Invalid email address");
+  //     return false;
+  //   }
 
-    const phoneRegex = /^[0-9]{10}$/;
-    if (!phoneRegex.test(formData.number.trim())) {
-      toast.error("Phone number must be 10 digits.");
-      return false;
-    }
+  //   const phoneRegex = /^[0-9]{10}$/;
+  //   if (!phoneRegex.test(formData.number.trim())) {
+  //     toast.error("Phone number must be 10 digits.");
+  //     return false;
+  //   }
 
-    return true;
-  };
+  //   return true;
+  // };
 
-  const checkUniqueFields = async () => {
-    const normalizedEmail = formData.emailId.trim().toLowerCase();
-    const { number } = formData;
+  // const checkUniqueFields = async () => {
+  //   const normalizedEmail = formData.emailId.trim().toLowerCase();
+  //   const { number } = formData;
 
-    const emailQuery = query(
-      collection(db, "registrations"),
-      where("emailId", "==", normalizedEmail)
-    );
-    const numberQuery = query(
-      collection(db, "registrations"),
-      where("number", "==", number)
-    );
+  //   const emailQuery = query(
+  //     collection(db, "registrations"),
+  //     where("emailId", "==", normalizedEmail)
+  //   );
+  //   const numberQuery = query(
+  //     collection(db, "registrations"),
+  //     where("number", "==", number)
+  //   );
 
-    try {
-      const [emailSnapshot, numberSnapshot] = await Promise.all([
-        getDocs(emailQuery),
-        getDocs(numberQuery),
-      ]);
-      if (!emailSnapshot.empty) {
-        toast.error("Email already registered");
-        return false;
-      }
-      if (!numberSnapshot.empty) {
-        toast.error("Phone number already registered");
-        return false;
-      }
-    } catch (error) {
-      console.error("Error checking unique fields: ", error);
-      toast.error("An error occurred while checking for uniqueness.");
-      return false;
-    }
-    return true;
-  };
+  //   try {
+  //     const [emailSnapshot, numberSnapshot] = await Promise.all([
+  //       getDocs(emailQuery),
+  //       getDocs(numberQuery),
+  //     ]);
+  //     if (!emailSnapshot.empty) {
+  //       toast.error("Email already registered");
+  //       return false;
+  //     }
+  //     if (!numberSnapshot.empty) {
+  //       toast.error("Phone number already registered");
+  //       return false;
+  //     }
+  //   } catch (error) {
+  //     console.error("Error checking unique fields: ", error);
+  //     toast.error("An error occurred while checking for uniqueness.");
+  //     return false;
+  //   }
+  //   return true;
+  // };
 
-  const handleRegister = async (e) => {
-    e.preventDefault();
-    setError("");
+  // const handleRegister = async (e) => {
+  //   e.preventDefault();
+  //   setError("");
 
-    if (loading) return;
-    if (!validateForm()) return;
+  //   if (loading) return;
+  //   if (!validateForm()) return;
 
-    setLoading(true);
-    try {
-      const token = await window.grecaptcha.execute(
-        "6LcpSGUqAAAAAFfQKc6O-qAz9FkUCjcesz-9qPQT",
-        { action: "submit" }
-      );
-      setRecaptchaToken(token);
+  //   setLoading(true);
+  //   try {
+  //     const token = await window.grecaptcha.execute(
+  //       "6LcpSGUqAAAAAFfQKc6O-qAz9FkUCjcesz-9qPQT",
+  //       { action: "submit" }
+  //     );
+  //     setRecaptchaToken(token);
 
-      const isUnique = await checkUniqueFields();
-      if (!isUnique) {
-        setLoading(false);
-        return;
-      }
+  //     const isUnique = await checkUniqueFields();
+  //     if (!isUnique) {
+  //       setLoading(false);
+  //       return;
+  //     }
 
-      const normalizedEmail = formData.emailId.trim().toLowerCase();
-      const skillsString = [
-        ...formData.skills.filter((s) => s !== "Other"),
-        ...(formData.skills.includes("Other") && formData.otherSkill
-          ? [formData.otherSkill]
-          : []),
-      ].join(", ");
+  //     const normalizedEmail = formData.emailId.trim().toLowerCase();
+  //     const skillsString = [
+  //       ...formData.skills.filter((s) => s !== "Other"),
+  //       ...(formData.skills.includes("Other") && formData.otherSkill
+  //         ? [formData.otherSkill]
+  //         : []),
+  //     ].join(", ");
 
-      const finalCollege =
-        formData.college === "Other" && formData.otherCollege
-          ? formData.otherCollege
-          : formData.college;
+  //     const finalCollege =
+  //       formData.college === "Other" && formData.otherCollege
+  //         ? formData.otherCollege
+  //         : formData.college;
 
-      const docRef = await addDoc(collection(db, "registrations"), {
-        ...formData,
-        emailId: normalizedEmail,
-        college: finalCollege,
-        skills: skillsString || "None",
-        prefferedlanguages: formData.prefferedlanguages || "None",
-        recaptchaToken: token,
-      });
+  //     const docRef = await addDoc(collection(db, "registrations"), {
+  //       ...formData,
+  //       emailId: normalizedEmail,
+  //       college: finalCollege,
+  //       skills: skillsString || "None",
+  //       prefferedlanguages: formData.prefferedlanguages || "None",
+  //       recaptchaToken: token,
+  //     });
 
-      console.log("Document written with ID: ", docRef.id);
-      toast.success("Registration Successful");
+  //     console.log("Document written with ID: ", docRef.id);
+  //     toast.success("Registration Successful");
 
-      setFormData({
-        fullName: "",
-        emailId: "",
-        number: "",
-        graduation: "",
-        college: "",
-        otherCollege: "",
-        branch: "",
-        skills: [],
-        otherSkill: "",
-        studentId: "",
-        prefferedlanguages: "",
-      });
-    } catch (error) {
-      console.error("Error adding document: ", error);
-      toast.error("An error occurred during registration.");
-    } finally {
-      setLoading(false);
-    }
-  };
+  //     setFormData({
+  //       fullName: "",
+  //       emailId: "",
+  //       number: "",
+  //       graduation: "",
+  //       college: "",
+  //       otherCollege: "",
+  //       branch: "",
+  //       skills: [],
+  //       otherSkill: "",
+  //       studentId: "",
+  //       prefferedlanguages: "",
+  //     });
+  //   } catch (error) {
+  //     console.error("Error adding document: ", error);
+  //     toast.error("An error occurred during registration.");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
-  const displayLabels = {
-    fullName: "Full Name",
-    emailId: "Email Address",
-    number: "Phone Number",
-    graduation: "Graduation Year",
-    college: "College Name",
-    branch: "Branch of Study",
-    skills: "Skills (optional)",
-    studentId: "Student ID (Enrollment No.)",
-    prefferedlanguages: "Preferred Language (optional)",
-  };
+  // const displayLabels = {
+  //   fullName: "Full Name",
+  //   emailId: "Email Address",
+  //   number: "Phone Number",
+  //   graduation: "Graduation Year",
+  //   college: "College Name",
+  //   branch: "Branch of Study",
+  //   skills: "Skills (optional)",
+  //   studentId: "Student ID (Enrollment No.)",
+  //   prefferedlanguages: "Preferred Language (optional)",
+  // };
 
   return (
-    <form onSubmit={handleRegister} className="registration-form">
+    <div className="registration-form">
+      <h3 className="registration-form__title">CodeAdept 9.0 Registration</h3>
+
+      <div className="registration-closed">
+        <h2>🚫 Registrations Closed</h2>
+        <p>
+          Thank you for your interest! Registrations for{" "}
+          <strong>CodeAdept 9.0</strong> are now closed.
+        </p>
+        <p>
+          Updates regarding the upcoming rounds will be shared with all
+          registered participants via email.
+        </p>
+      </div>
+
+      {/*<form onSubmit={handleRegister} className="registration-form">
       <h3 className="registration-form__title">CodeAdept 9.0 Registration</h3>
 
       {Object.keys(formData).map(
@@ -372,7 +387,8 @@ function Registration() {
         </button>
         <ToastContainer />
       </div>
-    </form>
+    </form>*/}
+    </div>
   );
 }
 

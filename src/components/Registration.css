@@ -207,3 +207,25 @@ body {
     flex-direction: column; /* Stack checkboxes in one column on smaller screens */
   }
 }
+
+.registration-closed {
+  text-align: center;
+  color: #fff;
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  padding: 40px 20px;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+
+.registration-closed h2 {
+  color: #ff4d4d;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.registration-closed p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #ddd;
+}
